@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).json({ error: "Could not find page" });
+  res.status(404).json({ error: "Could not find page" }); // statuskod 404 pga om sidan inte hittades
 });
 
 app.listen(PORT, () => {
