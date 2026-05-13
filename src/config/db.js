@@ -1,5 +1,4 @@
-import "dotenv/config";
-import mysql from "mysql/promise";
+import mysql from "mysql2/promise";
 
 // sätter upp min anslutningspool, konfiguerar kopplingen till min databas
 const pool = mysql.createPool({

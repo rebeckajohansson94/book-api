@@ -10,7 +10,7 @@ export async function fetchAllBooks(req, res) {
     const books = await getAllBooks();
     res.json(books);
   } catch (error) {
-    res.status(500).json({ error: "Something went wrong" }); // statuskod 500 pga om oväntat fel
+    res.status(500).json({ error: "Something went wrong" }); // statuskod 500 om oväntat fel
   }
 }
 
@@ -21,14 +21,14 @@ export async function fetchBooksByCategory(req, res) {
     // felhantering ifall ingen kategori anges
     if (!category) {
       return res.status(400).json({
-        error: "Category parameter is required", // statuskod 400 pga om ogiltig data från klienten
+        error: "Category parameter is required", // statuskod 400 om ogiltig data från klienten
       });
     }
 
     const books = await getBooksByCategory(category);
     res.json(books);
   } catch (error) {
-    res.status(500).json({ error: "Something went wrong" });
+    res.status(500).json({ error: "Something went wrong" }); // statuskod 500 om oväntat fel
   }
 }
 
@@ -37,6 +37,6 @@ export async function fetchBookCountByCategory(req, res) {
     const count = await getBookCountByCategory();
     res.json(count);
   } catch (error) {
-    res.status(500).json({ error: "Something went wrong" }); // statuskod 500 pga om oväntat fel
+    res.status(500).json({ error: "Something went wrong" }); // statuskod 500 om oväntat fel
   }
 }

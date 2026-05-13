@@ -1,6 +1,6 @@
 import pool from "../config/db.js";
 
-// models, här körs samtliga sql querys
+// models, här körs samtliga sql queries
 
 // få ut alla böcker med dess författare & kategori
 export async function getAllBooks() {
@@ -39,7 +39,7 @@ export async function getBooksByCategory(category) {
     WHERE k.namn = ?
     ORDER BY b.titel ASC
     `,
-    [category],
+    [category], // category anges separat från SQL-queryn och ersätts med ? för att skydda mot SQL-injektion för att göra koden säkrare.
   );
 
   return rows;
