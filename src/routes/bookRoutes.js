@@ -7,13 +7,13 @@ import {
 
 const router = express.Router();
 
-// hämtar alla böcker
+// get all books
 router.get("/", fetchAllBooks);
 
-// hämtar böcker filtrerade på kategori
+// get books filtered by category
 router.get("/category/:category", fetchBooksByCategory);
 
-// hämtar antal böcker per kategori
+// get number of books per category
 router.get("/category-count", fetchBookCountByCategory);
 
 export default router;

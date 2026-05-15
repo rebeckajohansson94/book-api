@@ -1,8 +1,8 @@
 import pool from "../config/db.js";
 
-// models, här körs samtliga sql queries
+// model file: handles all communication with the database, all SQL queries are run here
 
-// få ut alla böcker med dess författare & kategori
+// get all books with their author and category
 export async function getAllBooks() {
   const [rows] = await pool.execute(`
     SELECT 
@@ -21,8 +21,8 @@ export async function getAllBooks() {
   return rows;
 }
 
-// få ut alla böcker som tillhör en viss kategori
-// tar emot kategori som argument
+// get all books belonging to a specific category
+// receives category as an argument
 export async function getBooksByCategory(category) {
   const [rows] = await pool.execute(
     `
@@ -39,13 +39,13 @@ export async function getBooksByCategory(category) {
     WHERE k.namn = ?
     ORDER BY b.titel ASC
     `,
-    [category], // category anges separat från SQL-queryn och ersätts med ? för att skydda mot SQL-injektion för att göra koden säkrare.
+    [category], // category is passed separately from the SQL query and replaces ? to protect against SQL injection.
   );
 
   return rows;
 }
 
-// få ut antal böcker per kategori
+// get number of books per category
 export async function getBookCountByCategory() {
   const [rows] = await pool.execute(`
     SELECT 

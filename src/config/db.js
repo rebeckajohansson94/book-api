@@ -1,6 +1,6 @@
 import mysql from "mysql2/promise";
 
-// sätter upp min anslutningspool, konfiguerar kopplingen till min databas
+// creates a connection pool, configures the connection to the database
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT) || 3306,
